@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Javascript Loan Calculator</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<style>
+			/* 프로그램 출력을 꾸며주는 CSS 스타일 */
+			th{ text-align:left; }
+			.result{ font-weight:bold; }
+			.compute{ text-align:right; }
+			#month_payment{ text-decoration:underline; }
+		</style>
+	</head>
+	<body>
+		<form name="loandata">
+			<table>
+			    <caption>대출 상환금 계산하기</caption>
+				<tr><th colspan="2" scope="col">Enter Loan Information</th></tr>
+				<tr>
+					<td scope="row"><label for="loan_amount">1) Amount of the loan (any currency):</label></td>
+					<td><input type="text" name="loan_amount" id="loan_amount" value="200000" onchange="calculate();" /></td>
+				</tr>
+				<tr>
+				    <td scope="row"><label for="interest_annual">2) Annual percentage rate of interest:</label></td>
+				    <td><input type="text" name="interest_annual" id="interest_annual" value="6.5" onchange="calculate();" /></td>
+				</tr>
+				<tr>
+				    <td scope="row"><label for="period">3) Repayment period in years</label></td>
+				    <td><input type="text" name="period" id="period" value="30" onchange="calculate();" /></td>
+				</tr>
+				<tr>
+				    <td colspan="2" class="compute"><input type="submit" value="Compute" onclick="calculate();return false;" /></td>
+				</tr>
+				<tr>
+				    <th colspan="2" scope="col">Payment Information</th>
+				</tr>
+				<tr>
+				    <td scope="row">4) Your monthly payment:</td>
+				    <td>$ <span class="result" id="month_payment"></span></td>
+				</tr>
+				<tr>
+				    <td scope="row">5) Your total payment:</td>
+				    <td>$ <span class="result" id="total_payment"></span></td>
+				</tr>
+				<tr>
+				    <td scope="row">6) Your total interest payments:</td>
+				    <td>$ <span class="result" id="interest_payment"></span></td>
+				</tr>
+			</table>
+		</form>
+		<script>
+		    function calculate(){
+		        //폼에서 사용자 입력 값을 가져온다.
+		        var loan = document.loandata.loan_amount.value;
+		        // 이자율 백분율에서 십진수로, 월 이자율로 변
+		        var interest = document.loandata.interest_annual.value / 100 / 12;
+		        // 상환 기간 연수를 월수로 변환
+		        var period = document.loandata.period.value * 12;
+		        
+		        // 월별 상환금 계산
+		        var x = Math.pow(1+interest, period);
+		        var monthly = (loan * x * interest) / (x-1);
+		        
+		        // span elements 가져온다
+		        var payment = document.getElementById("month_payment");
+		        var total = document.getElementById("total_payment");
+		        var totalinterest = document.getElementById("interest_payment");
+		        
+		        // 결과값이 유효하다면,
+		        if( isFinite(monthly) ){
+		            payment.innerHTML = monthly.toFixed(2);
+		            total.innerHTML = (monthly * period).toFixed(2);
+		            totalinterest.innerHTML = ( (monthly * period) - loan ).toFixed(2);
+		        } else {
+		            payment.innerHTML = "";
+		            total.innerHTML = "";
+		            totalinterest.innerHTML = "";
+		        }
+		    }
+		</script>
+	</body>
+</html>
