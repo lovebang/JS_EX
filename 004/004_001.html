@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>변수의 유효 범</title>
+        <meta http-equiv="content-type"content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <script>
+            var scope="global";
+            function checkscope(){
+                var scope = "local";
+                document.write(scope+"<br>");
+            }
+            checkscope();
+            document.write(scope);
+        </script>
+    </body>
+</html>
+    

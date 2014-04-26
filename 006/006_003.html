@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>변수의 유효 범</title>
+        <meta http-equiv="content-type"content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <script>
+            try{
+                var n = prompt("Please enter a positive integer","");
+                var f = factorial(n);
+                alert(n+"! ="+f);
+            }
+            catch(e){
+                alert(e);
+            }
+            
+            function factorial(x){
+                if(x<1){
+                    throw new Error("x must be a positiove integer");
+                }
+                for(var f=1; x>1; f *= x, x--) /*empty*/ ;
+                return f;
+            }
+        </script>
+    </body>
+</html>
+    

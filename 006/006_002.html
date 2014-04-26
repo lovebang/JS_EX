@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>변수의 유효 범</title>
+        <meta http-equiv="content-type"content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <script>
+            function factorial(x){
+                if(x<0) throw new Error("x must not be negative.");
+                for(var f=1; x>1; f *= x, x--) /* empty */ ;
+                return f; 
+            }
+            alert( factorial(3) );
+        </script>
+    </body>
+</html>
+    

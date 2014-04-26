@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>값에 의한 복사, 전달,비교</title>
+        <meta http-equiv="content-type"content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <script>
+            var xmas = new Date(2007, 11, 25);
+            var solstice = xmas;
+            solstice.setDate(21);
+            document.write(xmas.getDate()+"<br>");
+            function add_to_tatals(total, x){
+                totals[0] = totals[0]+x;
+                totals[1] = totals[1]+x;
+                totals[2] = totals[2]+x;
+            }
+            document.write((xmas == solstice)+"<br>");
+            var xmas1 = new Date(2007, 11, 25);
+            var solstice1 = new Date(2007, 11, 25);
+            document.write(xmas1 == solstice1);
+        </script>
+    </body>
+</html>
+    

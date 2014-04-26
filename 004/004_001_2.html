@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>변수의 유효 범</title>
+        <meta http-equiv="content-type"content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <script>
+            var scope="global scope";
+            function checkscope(){
+                var scope = "local scope";
+                function nested(){
+                    var scope = "nested scope"
+                    document.write(scope+"<br>");
+                }
+                nested();
+            }
+            checkscope();
+            document.write(scope+"<br>");
+        </script>
+    </body>
+</html>
+    

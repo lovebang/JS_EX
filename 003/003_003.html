@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>값에 의한 복사, 전달,비교</title>
+        <meta http-equiv="content-type"content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <script>
+            // 배열에 대한 참조를 변경하려고 시도
+            function add_to_totals2(totals, x){
+                newtotals = new Array(3);
+                newtotals[0] = totals[0]+x;
+                newtotals[1] = totals[1]+x;
+                newtotals[2] = totals[2]+x;
+                totals = newtotals;
+                document.write(totals+"<br>"+newtotals);
+            }
+            var a = [1,2,3];
+            add_to_totals2(a, 1);
+        </script>
+    </body>
+</html>
+    
